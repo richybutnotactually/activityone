@@ -18,9 +18,9 @@ class StudentsController extends Controller
     public function createNewStd(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:55',
+            'name' => 'required|max:255',
             'age' => 'required|numeric',
-            'gender' => 'required|max:10',
+            'gender' => 'required|max:100',
             'address' => 'required'
         ]);
 
