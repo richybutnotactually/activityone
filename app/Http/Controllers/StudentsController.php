@@ -33,4 +33,28 @@ class StudentsController extends Controller
 
         return back()->with('success', 'Student added successfully!');
     }
+
+    // public function edit(Students $student){
+    //     return view('student.edit', ['student' => $student]);
+    // }
+
+    public function update(Students $student, Request $request){
+        $data = $request->validate([
+           'name' => 'required|max:55',
+            'age' => 'required|numeric',
+            'gender' => 'required|max:10',
+            'address' => 'required'
+        ]);
+
+        $student->update($data);
+
+        return back()->with('success', 'Student Updated Successfully');
+
+    }
+
+    public function delete(Students $student){
+        $student->delete();
+        return back()->with('success', 'Student Deleted Successfully');
+    }
+
 }
